@@ -1,0 +1,124 @@
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #2d1a0e 0%, #7a3a10 100%);
+  color: #fff;
+  padding: 3.5rem 2rem;
+  text-align: center;
+}
+
+.heroTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.1;
+}
+
+.heroSub {
+  color: #f5c9a0;
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.searchBar {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.searchBar input {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+  color: var(--text);
+}
+
+.searchBar input:focus {
+  outline: 2px solid var(--orange);
+}
+
+.searchBar button {
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.searchBar button:hover {
+  background: var(--orange-dark);
+}
+
+/* Filters */
+.filters {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.chip {
+  border: 1px solid var(--border);
+  background: none;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  transition: all 0.2s;
+}
+
+.chip:hover,
+.chip.active {
+  background: var(--orange);
+  color: #fff;
+  border-color: var(--orange);
+}
+
+/* Content */
+.content {
+  padding: 2rem;
+}
+
+.sectionTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  color: var(--text);
+}
+
+.count {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--muted);
+}
+
+.empty span {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.empty p {
+  font-size: 1rem;
+}
