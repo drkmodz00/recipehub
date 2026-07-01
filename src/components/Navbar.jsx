@@ -7,7 +7,8 @@ export default function Navbar() {
   return (
     <nav className={styles.nav}>
       <Link to="/" className={styles.logo}>
-        🍴 RecipeHub
+        <span className={styles.logoMark}>🍴</span>
+        <span className={styles.logoText}>RecipeHub</span>
       </Link>
       <div className={styles.links}>
         <Link to="/" className={pathname === '/' ? styles.active : ''}>

@@ -8,6 +8,7 @@ export default function RecipeDetail() {
   const navigate = useNavigate()
   const { recipes, toggleLike, isLiked } = useRecipeStore()
   const [imgError, setImgError] = useState(false)
+  const [checked, setChecked] = useState({})
 
   const recipe = recipes.find((r) => r.id === Number(id))
   const liked = recipe ? isLiked(recipe.id) : false
@@ -24,60 +25,105 @@ export default function RecipeDetail() {
 
   const showImage = recipe.image && !imgError
 
+  const toggleCheck = (i) => {
+    setChecked((prev) => ({ ...prev, [i]: !prev[i] }))
+  }
+
   return (
     <div className={styles.page}>
-      <div className={styles.container}>
+      {/* Hero */}
+      <div className={styles.hero}>
+        {showImage ? (
+          <img
+            src={recipe.image}
+            alt={recipe.title}
+            className={styles.heroImage}
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <div className={styles.heroFallback}>🍽️</div>
+        )}
+        <div className={styles.heroScrim} />
+
         <button className={styles.backBtn} onClick={() => navigate('/')}>
           ← Back to recipes
         </button>
 
-        {/* Hero */}
-        <div className={styles.hero}>
-          {showImage ? (
-            <img
-              src={recipe.image}
-              alt={recipe.title}
-              className={styles.heroImage}
-              onError={() => setImgError(true)}
-            />
-          ) : (
-            <div className={styles.heroFallback}>🍽️</div>
-          )}
-        </div>
-
-        {/* Header */}
-        <div className={styles.header}>
+        <div className={styles.heroOverlay}>
           <div className={styles.tags}>
             {recipe.tags.map((t) => (
               <span key={t} className={styles.tag}>{t}</span>
             ))}
           </div>
           <h1 className={styles.title}>{recipe.title}</h1>
-          <div className={styles.meta}>
-            <span>⏱ {recipe.time} min</span>
-            <span>👥 {recipe.servings} servings</span>
-            <span>📊 {recipe.difficulty}</span>
-            <span>👤 {recipe.author}</span>
+        </div>
+      </div>
+
+      <div className={styles.container}>
+        {/* Stat bar + like */}
+        <div className={styles.statBar}>
+          <div className={styles.stats}>
+            <div className={styles.stat}>
+              <span className={styles.statIcon}>⏱</span>
+              <div>
+                <p className={styles.statValue}>{recipe.time} min</p>
+                <p className={styles.statLabel}>Cook time</p>
+              </div>
+            </div>
+            <div className={styles.stat}>
+              <span className={styles.statIcon}>👥</span>
+              <div>
+                <p className={styles.statValue}>{recipe.servings}</p>
+                <p className={styles.statLabel}>Servings</p>
+              </div>
+            </div>
+            <div className={styles.stat}>
+              <span className={styles.statIcon}>📊</span>
+              <div>
+                <p className={styles.statValue}>{recipe.difficulty}</p>
+                <p className={styles.statLabel}>Difficulty</p>
+              </div>
+            </div>
+            <div className={styles.stat}>
+              <span className={styles.statIcon}>👤</span>
+              <div>
+                <p className={styles.statValue}>{recipe.author}</p>
+                <p className={styles.statLabel}>Author</p>
+              </div>
+            </div>
           </div>
+
           <button
             className={`${styles.likeBtn} ${liked ? styles.liked : ''}`}
             onClick={() => toggleLike(recipe.id)}
           >
-            {liked ? '❤️' : '🤍'} {recipe.likes + (liked ? 1 : 0)} likes
+            {liked ? '❤️' : '🤍'} {recipe.likes + (liked ? 1 : 0)}
           </button>
         </div>
 
         {/* Body */}
         <div className={styles.body}>
-          {/* Ingredients */}
-          <div className={styles.section}>
-            <h2 className={styles.sectionTitle}>Ingredients</h2>
+          {/* Ingredients — sticky sidebar, checkable */}
+          <aside className={styles.section}>
+            <h2 className={styles.sectionTitle}>
+              Ingredients
+              <span className={styles.sectionCount}>{recipe.ingredients.length}</span>
+            </h2>
             <ul className={styles.ingredientList}>
               {recipe.ingredients.map((item, i) => (
-                <li key={i}>{item}</li>
+                <li
+                  key={i}
+                  className={checked[i] ? styles.checkedItem : ''}
+                  onClick={() => toggleCheck(i)}
+                >
+                  <span className={`${styles.checkbox} ${checked[i] ? styles.checkboxOn : ''}`}>
+                    {checked[i] ? '✓' : ''}
+                  </span>
+                  {item}
+                </li>
               ))}
             </ul>
-          </div>
+          </aside>
 
           {/* Steps */}
           <div className={styles.section}>

@@ -1,29 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500;600;700&display=swap');
+
 .card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
+  --olive: #3F4E32;
+  --olive-light: #6B7F52;
+  --paprika: #C1502E;
+  --gold: #D6A24C;
+  --ink: #2B2A26;
+  --bg-cream: #FAF6EF;
+  --card-bg: #FFFFFF;
+  --line: #E5DFD2;
+
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(232, 98, 26, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(43, 42, 38, 0.1);
+  border-color: transparent;
 }
 
+/* ---------- Image ---------- */
 .imageWrap {
-  height: 160px;
+  position: relative;
+  width: 100%;
+  height: 180px;
+  background: var(--bg-cream);
   overflow: hidden;
-  background: var(--tag-bg);
 }
 
 .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  transition: transform 0.3s;
+  transition: transform 0.4s ease;
 }
 
 .card:hover .image {
@@ -31,71 +45,105 @@
 }
 
 .imageFallback {
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3.5rem;
+  font-size: 36px;
+  color: var(--olive-light);
+  background: var(--line);
 }
 
+.difficultyBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: rgba(250, 246, 239, 0.92);
+  backdrop-filter: blur(2px);
+  border-radius: 999px;
+  padding: 4px 11px;
+}
+
+/* ---------- Body ---------- */
 .body {
-  padding: 1rem;
+  padding: 18px;
 }
 
 .tags {
   display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.5rem;
+  gap: 6px;
+  margin-bottom: 10px;
 }
 
 .tag {
-  font-size: 0.72rem;
-  padding: 0.2rem 0.55rem;
-  border-radius: 12px;
-  background: var(--tag-bg);
-  color: var(--tag-text);
-  font-weight: 500;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--olive);
+  background: rgba(63, 78, 50, 0.08);
+  border-radius: 999px;
+  padding: 3px 10px;
 }
 
 .title {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.4rem;
-  line-height: 1.3;
-  color: var(--text);
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .meta {
   display: flex;
-  gap: 0.85rem;
-  font-size: 0.82rem;
-  color: var(--muted);
-  margin-bottom: 0.6rem;
+  gap: 14px;
+  font-size: 12.5px;
+  color: var(--olive-light);
+  margin-bottom: 14px;
 }
 
 .footer {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border-top: 1px solid var(--border);
-  padding-top: 0.5rem;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
 }
 
 .author {
-  font-size: 0.8rem;
-  color: var(--muted);
+  font-size: 12.5px;
+  color: var(--olive-light);
+  font-weight: 500;
 }
 
 .likeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   background: none;
   border: none;
-  font-size: 0.85rem;
-  color: var(--muted);
-  transition: transform 0.15s;
-  padding: 0;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 999px;
+  transition: background 0.2s ease;
 }
 
 .likeBtn:hover {
-  transform: scale(1.15);
+  background: rgba(193, 80, 46, 0.08);
 }

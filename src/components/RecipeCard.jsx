@@ -29,6 +29,7 @@ export default function RecipeCard({ recipe }) {
         ) : (
           <div className={styles.imageFallback}>🍽️</div>
         )}
+        <span className={styles.difficultyBadge}>{recipe.difficulty}</span>
       </div>
       <div className={styles.body}>
         <div className={styles.tags}>
@@ -40,7 +41,6 @@ export default function RecipeCard({ recipe }) {
         <div className={styles.meta}>
           <span>⏱ {recipe.time}m</span>
           <span>👥 {recipe.servings}</span>
-          <span>📊 {recipe.difficulty}</span>
         </div>
         <div className={styles.footer}>
           <span className={styles.author}>by {recipe.author}</span>

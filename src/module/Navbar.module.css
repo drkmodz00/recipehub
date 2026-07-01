@@ -1,51 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap');
+
 .nav {
+  --olive: #3F4E32;
+  --olive-light: #6B7F52;
+  --paprika: #C1502E;
+  --ink: #2B2A26;
+  --cream: #FAF6EF;
+  --line: #E5DFD2;
+
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: #fff;
-  border-bottom: 1px solid var(--border);
-  padding: 0 2rem;
-  height: 60px;
+  z-index: 50;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 16px 48px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
 }
 
+/* ---------- Logo ---------- */
 .logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  color: var(--orange);
-  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  color: var(--ink);
 }
 
+.logoMark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--olive);
+  font-size: 16px;
+  transform: rotate(-6deg);
+}
+
+.logoText {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+/* ---------- Links ---------- */
 .links {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 8px;
 }
 
 .links a {
-  font-size: 0.9rem;
-  color: var(--muted);
-  padding: 0.35rem 0.7rem;
-  border-radius: 6px;
-  transition: color 0.2s;
-}
-
-.links a:hover,
-.links a.active {
-  color: var(--orange);
-}
-
-.addBtn {
-  background: var(--orange) !important;
-  color: #fff !important;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 14px;
   font-weight: 500;
-  border-radius: 8px !important;
-  padding: 0.45rem 1rem !important;
+  text-decoration: none;
+  color: var(--olive-light);
+  padding: 9px 16px;
+  border-radius: 999px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.links a:hover {
+  color: var(--olive);
+  background: rgba(63, 78, 50, 0.06);
+}
+
+.links a.active {
+  color: var(--olive);
+  font-weight: 600;
+  background: rgba(63, 78, 50, 0.08);
+}
+
+/* Add Recipe — the one accent-colored control on the page */
+.addBtn {
+  background: var(--paprika) !important;
+  color: var(--cream) !important;
+  font-weight: 600 !important;
 }
 
 .addBtn:hover {
-  background: var(--orange-dark) !important;
-  color: #fff !important;
+  background: #A8431F !important;
+}
+
+.addBtn.active {
+  background: #A8431F !important;
+  color: var(--cream) !important;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .nav {
+    padding: 14px 20px;
+  }
+  .logoText {
+    font-size: 17px;
+  }
+  .links a {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
 }
