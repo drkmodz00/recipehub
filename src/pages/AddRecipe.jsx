@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useRecipeStore from '../store/useRecipeStore'
-import styles from '../module/AddRecipe.module.css'
+import styles from '../module/Addrecipe.module.css'
 
 const DIFFICULTIES = ['Easy', 'Medium', 'Hard']
 const CATEGORIES = ['Pasta', 'Mains', 'Salads', 'Desserts', 'Breakfast']
